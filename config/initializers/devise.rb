@@ -273,12 +273,36 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  env_creds = Rails.application.credentials[Rails.env.to_sym] || {}
-    %i{ facebook twitter github }.each do |provider|
-      if options = env_creds[provider]
-        config.omniauth provider, options[:app_id], options[:app_secret], options.fetch(:options, {})
-      end
-    end
+  # env_creds = Rails.application.credentials[Rails.env.to_sym] || {}
+  #   %i{ facebook twitter github google_oauth2 }.each do |provider|
+  #     if options = env_creds[provider]
+  #       config.omniauth provider, options[:app_id], options[:app_secret], options.fetch(:options, {})
+  #     end
+  #   end
+
+  #   config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :facebook_client_id),
+  #                 Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: 'public_profile,email',
+  #                 callback_url: 'http://localhost:3000/users/auth/facebook/callback'
+
+  # config.omniauth :github, Rails.application.credentials.dig(:github, :github_client_id),
+  #                 Rails.application.credentials.dig(:github, :github_client_secret), scope: 'user,public_repo',
+  #                 callback_url: 'http://localhost:3000/users/auth/github/callback'
+
+  # config.omniauth :google_oauth2, Rails.application.credentials.dig(:google, :google_client_id),
+  #                 Rails.application.credentials.dig(:google, :google_client_secret), scope: 'userinfo.email,userinfo.profile', display: 'popup',
+  #                 callback_url: 'http://localhost:3000/users/auth/google_oauth2/callback'
+
+  # if Rails.application.secrets.facebook_app_id.present? && Rails.application.secrets.facebook_app_secret.present?
+  #   config.omniauth :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_app_secret, scope: 'email,user_posts'
+  # end
+  #
+  # if Rails.application.secrets.twitter_app_id.present? && Rails.application.secrets.twitter_app_secret.present?
+  #   config.omniauth :twitter, Rails.application.secrets.twitter_app_id, Rails.application.secrets.twitter_app_secret
+  # end
+  #
+  # if Rails.application.secrets.github_app_id.present? && Rails.application.secrets.github_app_secret.present?
+  #   config.omniauth :github, Rails.application.secrets.github_app_id, Rails.application.secrets.github_app_secret
+  # end
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
